@@ -1,4 +1,4 @@
-# HTML
+# AgriHarv
 
 A modern HTML project utilizing Tailwind CSS for building responsive web applications with minimal setup.
 
@@ -75,8 +75,5 @@ The app is built with responsive design using Tailwind CSS breakpoints:
 - `2xl`: 1536px and up
 
 ## 🙏 Acknowledgments
-
-- Built with [Rocket.new](https://rocket.new)
-- Powered by HTML and Tailwind CSS
-
-Built with ❤️ on Rocket.new
+- Built by RANGESHPANDIAN PT
+  
