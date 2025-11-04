@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#333" />
+    </marker>
+    <style>
+      .cls-box { fill:#fff; stroke:#333; stroke-width:1.2px; }
+      .cls-title { font: bold 14px Arial; fill:#111; }
+      .cls-field { font: 12px Arial; fill:#222; }
+      .stereotype { font: italic 11px Arial; fill:#444; }
+      .small { font: 11px Arial; fill:#444; }
+      .note { font: 12px Arial; fill:#555; }
+    </style>
+  </defs>
+
+  <!-- User class -->
+  <rect x="40" y="40" rx="6" ry="6" width="230" height="110" class="cls-box" />
+  <text x="155" y="60" text-anchor="middle" class="cls-title">User</text>
+  <text x="55" y="84" class="cls-field">- id: Long</text>
+  <text x="55" y="102" class="cls-field">- username: String</text>
+  <text x="55" y="120" class="cls-field">- password: String</text>
+
+  <!-- SoilAnalysis class -->
+  <rect x="40" y="180" rx="6" ry="6" width="230" height="110" class="cls-box" />
+  <text x="155" y="200" text-anchor="middle" class="cls-title">SoilAnalysis</text>
+  <text x="55" y="224" class="cls-field">- id: Long</text>
+  <text x="55" y="242" class="cls-field">- soilType: String</text>
+  <text x="55" y="260" class="cls-field">- recommendedCrop: String</text>
+
+  <!-- Repositories -->
+  <rect x="340" y="60" rx="6" ry="6" width="260" height="60" class="cls-box" />
+  <text x="470" y="78" text-anchor="middle" class="cls-title">UserRepository</text>
+  <text x="370" y="96" class="cls-field">+ findByUsername(username): User</text>
+  <text x="370" y="110" class="small">«interface» extends JpaRepository&lt;User,Long&gt;</text>
+
+  <rect x="340" y="200" rx="6" ry="6" width="260" height="60" class="cls-box" />
+  <text x="470" y="218" text-anchor="middle" class="cls-title">SoilAnalysisRepository</text>
+  <text x="370" y="236" class="cls-field">+ findBySoilType(soilType): SoilAnalysis</text>
+  <text x="370" y="250" class="small">«interface» extends JpaRepository&lt;SoilAnalysis,Long&gt;</text>
+
+  <!-- Controllers -->
+  <rect x="660" y="40" rx="6" ry="6" width="260" height="68" class="cls-box" />
+  <text x="790" y="60" text-anchor="middle" class="cls-title">UserController</text>
+  <text x="680" y="82" class="cls-field">+ login(user: User): User</text>
+  <text x="680" y="96" class="small">uses UserRepository</text>
+
+  <rect x="660" y="140" rx="6" ry="6" width="260" height="68" class="cls-box" />
+  <text x="790" y="160" text-anchor="middle" class="cls-title">SoilAnalysisController</text>
+  <text x="680" y="182" class="cls-field">+ getSoilAnalysis(soilType): SoilAnalysis</text>
+  <text x="680" y="196" class="small">uses SoilAnalysisRepository</text>
+
+  <rect x="660" y="240" rx="6" ry="6" width="260" height="56" class="cls-box" />
+  <text x="790" y="260" text-anchor="middle" class="cls-title">DownloadController</text>
+  <text x="680" y="282" class="cls-field">+ downloadFile(): Resource</text>
+
+  <!-- Associations Arrows -->
+  <!-- UserRepository -> User -->
+  <line x1="340" y1="90" x2="270" y2="90" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" />
+  <text x="300" y="82" class="small">CRUD on</text>
+
+  <!-- SoilAnalysisRepository -> SoilAnalysis -->
+  <line x1="340" y1="230" x2="270" y2="230" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" />
+  <text x="300" y="222" class="small">CRUD on</text>
+
+  <!-- UserController -> UserRepository -->
+  <line x1="600" y1="74" x2="600" y2="74" stroke="transparent" />
+  <line x1="600" y1="74" x2="600" y2="74" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" />
+  <line x1="600" y1="74" x2="600" y2="74" />
+  <line x1="600" y1="74" x2="600" y2="74" />
+  <line x1="600" y1="74" x2="600" y2="74" />
+  <line x1="620" y1="74" x2="620" y2="74" />
+  <line x1="620" y1="74" x2="600" y2="74" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" />
+  <!-- Instead draw from controllers to repos -->
+  <line x1="660" y1="90" x2="600" y2="90" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" />
+  <line x1="660" y1="170" x2="600" y2="230" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)" />
+
+  <!-- Notes -->
+  <text x="40" y="330" class="note">Notes: Model classes (left). Repositories (middle) provide data access; controllers (right) use repositories to serve HTTP endpoints.</text>
+
+</svg>

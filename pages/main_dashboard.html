@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Dashboard - AgriHarv</title>
+    <link rel="stylesheet" href="../css/main.css" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fagriharv2725back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="min-h-screen bg-background">
+    <!-- Navigation Header -->
+    <nav class="sticky top-0 z-50 bg-surface/95 backdrop-blur-sm border-b border-border shadow-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-8-6z"/>
+                            <path d="M12 14l2 2 6-6" stroke="white" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <h1 class="text-xl font-bold text-primary font-heading">AgriHarv</h1>
+                        <p class="text-xs text-text-secondary">Smart Farming Solutions</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="main_dashboard.html" class="text-primary bg-primary-50 px-3 py-2 rounded-md text-sm font-medium transition-smooth">Dashboard</a>
+                        <a href="soil_analysis_details.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth">Soil Analysis</a>
+                        <a href="weather_forecast_details.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth">Weather</a>
+                        <a href="market_analysis.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth">Market</a>
+                        <a href="digital_journal.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth">Journal</a>
+                    </div>
+                </div>
+
+                <!-- User Profile -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="relative">
+                        <button class="flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-primary" onclick="toggleUserMenu()">
+                            <img class="h-8 w-8 rounded-full object-cover" src="Profile.png" alt="User profile" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            <span class="ml-2 text-text-primary font-medium">RangeshPandian PT</span>
+                            <svg class="ml-1 h-4 w-4 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        
+                        <!-- User Dropdown Menu -->
+                        <div id="user-menu" class="hidden absolute right-0 mt-2 w-48 bg-surface rounded-lg shadow-lg border border-border">
+                            <div class="py-1">
+                                <a href="profile.html" class="block px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-smooth">Profile Settings</a>
+                                <a href="javascript:void(0)" class="block px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-smooth">Farm Details</a>
+                                <div class="border-t border-border"></div>
+                                <a href="login.html" class="block px-4 py-2 text-sm text-error hover:bg-error-50 transition-smooth">Sign Out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-text-secondary hover:text-primary p-2 rounded-md" onclick="toggleMobileMenu()">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-border">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="main_dashboard.html" class="text-primary bg-primary-50 block px-3 py-2 rounded-md text-base font-medium transition-smooth">Dashboard</a>
+                <a href="soil_analysis_details.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Soil Analysis</a>
+                <a href="weather_forecast_details.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Weather</a>
+                <a href="market_analysis.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Market</a>
+                <a href="digital_journal.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Journal</a>
+                <div class="border-t border-border mt-2 pt-2">
+                    <a href="profile.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Profile</a>
+                    <a href="login.html" class="text-error block px-3 py-2 rounded-md text-base font-medium transition-smooth">Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+        <!-- Hero Section -->
+        <section class="relative bg-primary-600 overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="https://images.pixabay.com/photo/2016/08/11/23/48/mountains-1587287_1920.jpg" alt="Agricultural farmland landscape" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                <div class="absolute inset-0 bg-primary/60"></div>
+            </div>
+            
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white font-heading mb-4">
+                        Welcome to Your Farm Dashboard
+                    </h1>
+                    <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                        Monitor your crops, track weather patterns, analyze soil health, and manage your agricultural operations all in one place.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button onclick="scrollToSection('soil-analysis')" class="bg-accent hover:bg-accent-600 text-white px-8 py-3 rounded-lg font-medium transition-smooth shadow-soft-hover">
+                            Check Soil Health
+                        </button>
+                        <button onclick="scrollToSection('weather-forecast')" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-3 rounded-lg font-medium transition-smooth">
+                            View Weather Forecast
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Cards Section -->
+        <section class="py-12 bg-background">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-text-primary font-heading mb-4">Farm Management Dashboard</h2>
+                    <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+                        Get real-time insights into your farm's performance with our comprehensive monitoring tools.
+                    </p>
+                </div>
+
+                <!-- Dashboard Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Soil Analysis Card -->
+                    <div id="soil-analysis" class="bg-surface rounded-xl shadow-soft hover:shadow-soft-hover transition-gentle border border-border group cursor-pointer" onclick="window.location.href='soil_analysis_details.html'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center">
+                                    <div class="bg-primary-100 p-3 rounded-lg">
+                                        <svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-text-primary ml-3 group-hover:text-primary transition-smooth">Soil Analysis</h3>
+                                </div>
+                                <svg class="h-5 w-5 text-text-secondary group-hover:text-primary transition-smooth" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-text-secondary">pH Level</span>
+                                    <div class="flex items-center">
+                                        <span class="text-sm font-medium text-success">6.8</span>
+                                        <div class="ml-2 w-16 h-2 bg-border rounded-full">
+                                            <div class="w-3/4 h-full bg-success rounded-full"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-text-secondary">Moisture</span>
+                                    <div class="flex items-center">
+                                        <span class="text-sm font-medium text-primary">45%</span>
+                                        <div class="ml-2 w-16 h-2 bg-border rounded-full">
+                                            <div class="w-1/2 h-full bg-primary rounded-full"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-text-secondary">Fertility Index</span>
+                                    <div class="flex items-center">
+                                        <span class="text-sm font-medium text-accent">Good</span>
+                                        <div class="ml-2 w-3 h-3 bg-accent rounded-full"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 pt-4 border-t border-border">
+                                <p class="text-xs text-text-secondary">Last updated: 2 hours ago</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weather Forecast Card -->
+                    <div id="weather-forecast" class="bg-surface rounded-xl shadow-soft hover:shadow-soft-hover transition-gentle border border-border group cursor-pointer" onclick="window.location.href='weather_forecast_details.html'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center">
+                                    <div class="bg-accent-100 p-3 rounded-lg">
+                                        <svg class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-text-primary ml-3 group-hover:text-primary transition-smooth">Weather Forecast</h3>
+                                </div>
+                                <svg class="h-5 w-5 text-text-secondary group-hover:text-primary transition-smooth" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                            
+                            <div class="text-center mb-4">
+                                <div class="text-3xl font-bold text-text-primary">72°F</div>
+                                <div class="text-sm text-text-secondary">Partly Cloudy</div>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-text-secondary">Humidity</span>
+                                    <span class="text-sm font-medium text-text-primary">68%</span>
+                                </div>
+                                
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-text-secondary">Rainfall</span>
+                                    <span class="text-sm font-medium text-primary">0.2 inches</span>
+                                </div>
+                                
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-text-secondary">Wind Speed</span>
+                                    <span class="text-sm font-medium text-text-primary">8 mph</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 pt-4 border-t border-border">
+                                <p class="text-xs text-text-secondary">7-day forecast available</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Market Analysis Card -->
+                    <div class="bg-surface rounded-xl shadow-soft hover:shadow-soft-hover transition-gentle border border-border group cursor-pointer" onclick="window.location.href='market_analysis.html'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center">
+                                    <div class="bg-secondary-100 p-3 rounded-lg">
+                                        <svg class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-text-primary ml-3 group-hover:text-primary transition-smooth">Market Prices</h3>
+                                </div>
+                                <svg class="h-5 w-5 text-text-secondary group-hover:text-primary transition-smooth" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-text-secondary">Rice</span>
+                                    <div class="flex items-center">
+                                        <span class="text-sm font-medium text-success">$4.25/lb</span>
+                                        <svg class="ml-1 h-3 w-3 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-text-secondary">Wheat</span>
+                                    <div class="flex items-center">
+                                        <span class="text-sm font-medium text-error">$3.80/lb</span>
+                                        <svg class="ml-1 h-3 w-3 text-error" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-text-secondary">Corn</span>
+                                    <div class="flex items-center">
+                                        <span class="text-sm font-medium text-text-primary">$2.95/lb</span>
+                                        <div class="ml-1 w-2 h-2 bg-text-secondary rounded-full"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 pt-4 border-t border-border">
+                                <p class="text-xs text-text-secondary">Updated 15 minutes ago</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Digital Journal Card -->
+                    <div class="bg-surface rounded-xl shadow-soft hover:shadow-soft-hover transition-gentle border border-border group cursor-pointer" onclick="window.location.href='digital_journal.html'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center">
+                                    <div class="bg-primary-100 p-3 rounded-lg">
+                                        <svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-text-primary ml-3 group-hover:text-primary transition-smooth">Digital Journal</h3>
+                                </div>
+                                <svg class="h-5 w-5 text-text-secondary group-hover:text-primary transition-smooth" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <div class="bg-primary-50 p-3 rounded-lg">
+                                    <div class="text-xs text-text-secondary mb-1">Today's Entry</div>
+                                    <div class="text-sm text-text-primary">Applied fertilizer to north field. Weather conditions optimal for planting...</div>
+                                </div>
+                                
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="text-text-secondary">Total Entries</span>
+                                    <span class="font-medium text-text-primary">47</span>
+                                </div>
+                                
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="text-text-secondary">This Month</span>
+                                    <span class="font-medium text-text-primary">12</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 pt-4 border-t border-border">
+                                <p class="text-xs text-text-secondary">Last entry: Today at 2:30 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions Card -->
+                    <div class="bg-surface rounded-xl shadow-soft hover:shadow-soft-hover transition-gentle border border-border">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-accent-100 p-3 rounded-lg">
+                                    <svg class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold text-text-primary ml-3">Quick Actions</h3>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <button onclick="addJournalEntry()" class="w-full text-left p-3 rounded-lg border border-border hover:bg-primary-50 hover:border-primary transition-smooth">
+                                    <div class="text-sm font-medium text-text-primary">Add Journal Entry</div>
+                                    <div class="text-xs text-text-secondary">Record today's activities</div>
+                                </button>
+                                
+                                <button onclick="checkWeatherAlerts()" class="w-full text-left p-3 rounded-lg border border-border hover:bg-accent-50 hover:border-accent transition-smooth">
+                                    <div class="text-sm font-medium text-text-primary">Weather Alerts</div>
+                                    <div class="text-xs text-text-secondary">Check for warnings</div>
+                                </button>
+                                
+                                <button onclick="viewReports()" class="w-full text-left p-3 rounded-lg border border-border hover:bg-secondary-50 hover:border-secondary transition-smooth">
+                                    <div class="text-sm font-medium text-text-primary">Generate Report</div>
+                                    <div class="text-xs text-text-secondary">Monthly farm summary</div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Farm Statistics Card -->
+                    <div class="bg-surface rounded-xl shadow-soft hover:shadow-soft-hover transition-gentle border border-border">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-success-100 p-3 rounded-lg">
+                                    <svg class="h-6 w-6 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold text-text-primary ml-3">Farm Statistics</h3>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-success">125 acres</div>
+                                    <div class="text-sm text-text-secondary">Total Farm Area</div>
+                                </div>
+                                
+                                <div class="grid grid-cols-2 gap-4 text-center">
+                                    <div>
+                                        <div class="text-lg font-semibold text-text-primary">85%</div>
+                                        <div class="text-xs text-text-secondary">Planted</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-lg font-semibold text-text-primary">3</div>
+                                        <div class="text-xs text-text-secondary">Crops</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 pt-4 border-t border-border">
+                                <p class="text-xs text-text-secondary">Season: Spring 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <svg class="h-6 w-6 text-accent mr-2" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M16 2L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-8-6z"/>
+                        <path d="M12 14l2 2 6-6" stroke="white" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="text-lg font-bold font-heading">AgriHarv</span>
+                </div>
+                <p class="text-primary-200 text-sm mb-4">Empowering farmers with smart agricultural solutions</p>
+                <p class="text-primary-300 text-xs">© 2025 AgriHarv. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function toggleUserMenu() {
+            const menu = document.getElementById('user-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function addJournalEntry() {
+            window.location.href = 'digital_journal.html';
+        }
+
+        function checkWeatherAlerts() {
+            alert('No weather alerts at this time. Current conditions are favorable for farming activities.');
+        }
+
+        function viewReports() {
+            alert('Report generation feature coming soon. This will provide comprehensive farm analytics and insights.');
+        }
+
+        // Close user menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const userMenu = document.getElementById('user-menu');
+            const userButton = event.target.closest('button');
+            
+            if (!userButton || !userButton.onclick || userButton.onclick.toString().indexOf('toggleUserMenu') === -1) {
+                userMenu.classList.add('hidden');
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileButton = event.target.closest('button');
+            
+            if (!mobileButton || !mobileButton.onclick || mobileButton.onclick.toString().indexOf('toggleMobileMenu') === -1) {
+                if (!mobileMenu.contains(event.target)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            }
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

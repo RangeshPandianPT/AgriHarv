@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Market Analysis - AgriHarv</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fagriharv2725back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="min-h-screen bg-background">
+    <!-- Navigation Header -->
+    <nav class="sticky top-0 z-50 bg-surface/95 backdrop-blur-sm border-b border-border shadow-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-8-6z"/>
+                            <path d="M12 14l2 2 6-6" stroke="white" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <h1 class="text-xl font-bold text-primary font-heading">AgriHarv</h1>
+                        <p class="text-xs text-text-secondary">Smart Farming Solutions</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="main_dashboard.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth">Dashboard</a>
+                        <a href="soil_analysis_details.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth">Soil Analysis</a>
+                        <a href="weather_forecast_details.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth">Weather</a>
+                        <a href="market_analysis.html" class="text-primary bg-primary-50 px-3 py-2 rounded-md text-sm font-medium">Market</a>
+                        <a href="digital_journal.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth">Journal</a>
+                    </div>
+                </div>
+
+                <!-- User Profile -->
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 text-text-secondary hover:text-primary transition-smooth" onclick="toggleUserMenu()">
+                            <img src="https://images.pexels.com/photos/1300402/pexels-photo-1300402.jpeg?auto=compress&cs=tinysrgb&w=64&h=64&fit=crop" alt="User profile" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            <span class="hidden sm:block text-sm font-medium">John Farmer</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        
+                        <!-- User Dropdown Menu -->
+                        <div id="user-menu" class="hidden absolute right-0 mt-2 w-48 bg-surface rounded-lg shadow-lg border border-border">
+                            <div class="py-1">
+                                <a href="javascript:void(0)" class="block px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-smooth">Profile Settings</a>
+                                <a href="javascript:void(0)" class="block px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-smooth">Notifications</a>
+                                <div class="border-t border-border"></div>
+                                <a href="login.html" class="block px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-smooth">Sign Out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-text-secondary hover:text-primary p-2 rounded-md" onclick="toggleMobileMenu()">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-border">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="main_dashboard.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Dashboard</a>
+                <a href="soil_analysis_details.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Soil Analysis</a>
+                <a href="weather_forecast_details.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Weather</a>
+                <a href="market_analysis.html" class="text-primary bg-primary-50 block px-3 py-2 rounded-md text-base font-medium">Market</a>
+                <a href="digital_journal.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Journal</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Page Header -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-text-primary font-heading">Market Analysis</h1>
+                    <p class="mt-2 text-text-secondary">Track crop prices, analyze market trends, and make informed selling decisions</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="exportReport()" class="inline-flex items-center px-4 py-2 border border-primary text-primary bg-surface hover:bg-primary-50 rounded-lg text-sm font-medium transition-smooth">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        Export Report
+                    </button>
+                    <button onclick="setPriceAlert()" class="inline-flex items-center px-4 py-2 bg-primary text-white hover:bg-primary-600 rounded-lg text-sm font-medium transition-smooth">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM4.828 7l2.586 2.586a2 2 0 002.828 0L16 4"/>
+                        </svg>
+                        Set Price Alert
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Market Overview Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Rice Card -->
+            <div class="bg-surface rounded-xl shadow-soft border border-border p-6 hover:shadow-soft-hover transition-smooth">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-lg font-semibold text-text-primary">Rice</h3>
+                            <p class="text-sm text-text-secondary">Per Quintal</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-2xl font-bold text-text-primary">$45.20</p>
+                        <div class="flex items-center text-success">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17l9.2-9.2M17 17V7H7"/>
+                            </svg>
+                            <span class="text-sm font-medium">+2.5%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-text-secondary">Volume:</span>
+                        <span class="text-text-primary font-medium">1,250 tons</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-text-secondary">24h Change:</span>
+                        <span class="text-success font-medium">+$1.10</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wheat Card -->
+            <div class="bg-surface rounded-xl shadow-soft border border-border p-6 hover:shadow-soft-hover transition-smooth">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-secondary-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-lg font-semibold text-text-primary">Wheat</h3>
+                            <p class="text-sm text-text-secondary">Per Quintal</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-2xl font-bold text-text-primary">$38.75</p>
+                        <div class="flex items-center text-error">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 7l-9.2 9.2M7 7v10h10"/>
+                            </svg>
+                            <span class="text-sm font-medium">-1.2%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-text-secondary">Volume:</span>
+                        <span class="text-text-primary font-medium">980 tons</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-text-secondary">24h Change:</span>
+                        <span class="text-error font-medium">-$0.47</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Corn Card -->
+            <div class="bg-surface rounded-xl shadow-soft border border-border p-6 hover:shadow-soft-hover transition-smooth">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-lg font-semibold text-text-primary">Corn</h3>
+                            <p class="text-sm text-text-secondary">Per Quintal</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-2xl font-bold text-text-primary">$32.90</p>
+                        <div class="flex items-center text-success">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17l9.2-9.2M17 17V7H7"/>
+                            </svg>
+                            <span class="text-sm font-medium">+0.8%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-text-secondary">Volume:</span>
+                        <span class="text-text-primary font-medium">1,450 tons</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-text-secondary">24h Change:</span>
+                        <span class="text-success font-medium">+$0.26</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts and Analysis Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+            <!-- Price Trends Chart -->
+            <div class="lg:col-span-2 bg-surface rounded-xl shadow-soft border border-border p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-semibold text-text-primary font-heading">Price Trends</h2>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="updateChart('daily')" class="px-3 py-1 text-sm bg-primary text-white rounded-md">Daily</button>
+                        <button onclick="updateChart('weekly')" class="px-3 py-1 text-sm text-text-secondary hover:text-primary">Weekly</button>
+                        <button onclick="updateChart('monthly')" class="px-3 py-1 text-sm text-text-secondary hover:text-primary">Monthly</button>
+                    </div>
+                </div>
+                <div class="h-80">
+                    <canvas id="priceChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Market Insights -->
+            <div class="bg-surface rounded-xl shadow-soft border border-border p-6">
+                <h2 class="text-xl font-semibold text-text-primary font-heading mb-6">Market Insights</h2>
+                <div class="space-y-4">
+                    <div class="border-l-4 border-success pl-4">
+                        <h3 class="font-medium text-text-primary">Rice Demand Rising</h3>
+                        <p class="text-sm text-text-secondary mt-1">Export orders increased by 15% this week, driving prices up.</p>
+                        <span class="text-xs text-success">2 hours ago</span>
+                    </div>
+                    <div class="border-l-4 border-warning pl-4">
+                        <h3 class="font-medium text-text-primary">Wheat Weather Concerns</h3>
+                        <p class="text-sm text-text-secondary mt-1">Drought conditions in major growing regions may affect supply.</p>
+                        <span class="text-xs text-warning">4 hours ago</span>
+                    </div>
+                    <div class="border-l-4 border-primary pl-4">
+                        <h3 class="font-medium text-text-primary">Corn Harvest Update</h3>
+                        <p class="text-sm text-text-secondary mt-1">Early harvest reports show above-average yields in key regions.</p>
+                        <span class="text-xs text-primary">6 hours ago</span>
+                    </div>
+                </div>
+                <button class="w-full mt-4 text-sm text-primary hover:text-primary-600 font-medium transition-smooth">
+                    View All News →
+                </button>
+            </div>
+        </div>
+
+        <!-- Regional Comparison and Profit Calculator -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Regional Market Comparison -->
+            <div class="bg-surface rounded-xl shadow-soft border border-border p-6">
+                <h2 class="text-xl font-semibold text-text-primary font-heading mb-6">Regional Price Comparison</h2>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between p-4 bg-primary-50 rounded-lg">
+                        <div>
+                            <h3 class="font-medium text-text-primary">North Region</h3>
+                            <p class="text-sm text-text-secondary">Rice: $45.20 | Wheat: $38.75 | Corn: $32.90</p>
+                        </div>
+                        <span class="text-sm font-medium text-success">Best Prices</span>
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                        <div>
+                            <h3 class="font-medium text-text-primary">South Region</h3>
+                            <p class="text-sm text-text-secondary">Rice: $43.80 | Wheat: $37.20 | Corn: $31.50</p>
+                        </div>
+                        <span class="text-sm font-medium text-text-secondary">-3.2%</span>
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                        <div>
+                            <h3 class="font-medium text-text-primary">East Region</h3>
+                            <p class="text-sm text-text-secondary">Rice: $44.10 | Wheat: $38.00 | Corn: $32.20</p>
+                        </div>
+                        <span class="text-sm font-medium text-text-secondary">-1.8%</span>
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                        <div>
+                            <h3 class="font-medium text-text-primary">West Region</h3>
+                            <p class="text-sm text-text-secondary">Rice: $42.90 | Wheat: $36.80 | Corn: $31.80</p>
+                        </div>
+                        <span class="text-sm font-medium text-error">-4.5%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profit Calculator -->
+            <div class="bg-surface rounded-xl shadow-soft border border-border p-6">
+                <h2 class="text-xl font-semibold text-text-primary font-heading mb-6">Profit Calculator</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-text-primary mb-2">Crop Type</label>
+                        <select id="cropSelect" class="w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option value="rice">Rice</option>
+                            <option value="wheat">Wheat</option>
+                            <option value="corn">Corn</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-text-primary mb-2">Quantity (Quintals)</label>
+                        <input type="number" id="quantity" value="100" class="w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-text-primary mb-2">Production Cost per Quintal ($)</label>
+                        <input type="number" id="cost" value="25.00" step="0.01" class="w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                    </div>
+                    <button onclick="calculateProfit()" class="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-600 transition-smooth">
+                        Calculate Profit
+                    </button>
+                    <div id="profitResult" class="hidden p-4 bg-success-50 rounded-lg border border-success-200">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium text-success">Estimated Profit:</span>
+                            <span id="profitAmount" class="text-lg font-bold text-success">$0.00</span>
+                        </div>
+                        <div class="mt-2 text-xs text-success-600">
+                            <div class="flex justify-between">
+                                <span>Revenue:</span>
+                                <span id="revenue">$0.00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Total Cost:</span>
+                                <span id="totalCost">$0.00</span>
+                            </div>
+                            <div class="flex justify-between font-medium">
+                                <span>Profit Margin:</span>
+                                <span id="profitMargin">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Price Alerts Section -->
+        <div class="bg-surface rounded-xl shadow-soft border border-border p-6">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-semibold text-text-primary font-heading">Active Price Alerts</h2>
+                <button onclick="addNewAlert()" class="inline-flex items-center px-4 py-2 bg-primary text-white hover:bg-primary-600 rounded-lg text-sm font-medium transition-smooth">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                    </svg>
+                    Add Alert
+                </button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="p-4 border border-border rounded-lg">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-medium text-text-primary">Rice Alert</span>
+                        <button class="text-error hover:text-error-600">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="text-sm text-text-secondary">Alert when price reaches $47.00</p>
+                    <div class="mt-2 flex items-center text-xs">
+                        <span class="px-2 py-1 bg-warning-100 text-warning rounded-full">Active</span>
+                        <span class="ml-2 text-text-secondary">$2.80 to go</span>
+                    </div>
+                </div>
+                <div class="p-4 border border-border rounded-lg">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-medium text-text-primary">Wheat Alert</span>
+                        <button class="text-error hover:text-error-600">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="text-sm text-text-secondary">Alert when price drops below $35.00</p>
+                    <div class="mt-2 flex items-center text-xs">
+                        <span class="px-2 py-1 bg-success-100 text-success rounded-full">Monitoring</span>
+                        <span class="ml-2 text-text-secondary">$3.75 above</span>
+                    </div>
+                </div>
+                <div class="p-4 border border-border rounded-lg">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-medium text-text-primary">Corn Alert</span>
+                        <button class="text-error hover:text-error-600">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="text-sm text-text-secondary">Alert when price reaches $35.00</p>
+                    <div class="mt-2 flex items-center text-xs">
+                        <span class="px-2 py-1 bg-warning-100 text-warning rounded-full">Active</span>
+                        <span class="ml-2 text-text-secondary">$2.10 to go</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <svg class="h-6 w-6 text-accent mr-2" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M16 2L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-8-6z"/>
+                        <path d="M12 14l2 2 6-6" stroke="white" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="text-lg font-bold font-heading">AgriHarv</span>
+                </div>
+                <p class="text-primary-200 text-sm mb-4">Empowering farmers with smart agricultural solutions</p>
+                <p class="text-primary-300 text-xs">© 2025 AgriHarv. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Chart.js configuration
+        let priceChart;
+        const cropPrices = {
+            rice: 45.20,
+            wheat: 38.75,
+            corn: 32.90
+        };
+
+        // Initialize price chart
+        function initChart() {
+            const ctx = document.getElementById('priceChart').getContext('2d');
+            priceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+                    datasets: [{
+                        label: 'Rice',
+                        data: [42.5, 43.2, 44.1, 43.8, 44.5, 45.2, 44.9, 45.1, 45.2],
+                        borderColor: '#F4A460',
+                        backgroundColor: 'rgba(244, 164, 96, 0.1)',
+                        tension: 0.4
+                    }, {
+                        label: 'Wheat',
+                        data: [36.8, 37.5, 38.2, 39.1, 38.9, 38.5, 38.8, 38.9, 38.75],
+                        borderColor: '#8B4513',
+                        backgroundColor: 'rgba(139, 69, 19, 0.1)',
+                        tension: 0.4
+                    }, {
+                        label: 'Corn',
+                        data: [31.2, 31.8, 32.1, 32.5, 32.8, 33.1, 32.9, 32.7, 32.9],
+                        borderColor: '#2D5A27',
+                        backgroundColor: 'rgba(45, 90, 39, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            title: {
+                                display: true,
+                                text: 'Price ($)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Toggle user menu
+        function toggleUserMenu() {
+            const menu = document.getElementById('user-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Update chart based on time period
+        function updateChart(period) {
+            // Update button states
+            document.querySelectorAll('button[onclick^="updateChart"]').forEach(btn => {
+                btn.className = 'px-3 py-1 text-sm text-text-secondary hover:text-primary';
+            });
+            event.target.className = 'px-3 py-1 text-sm bg-primary text-white rounded-md';
+
+            // Update chart data based on period
+            let newData;
+            if (period === 'daily') {
+                newData = {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: priceChart.data.datasets.map(dataset => ({
+                        ...dataset,
+                        data: generateDailyData(dataset.label)
+                    }))
+                };
+            } else if (period === 'weekly') {
+                newData = {
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                    datasets: priceChart.data.datasets.map(dataset => ({
+                        ...dataset,
+                        data: generateWeeklyData(dataset.label)
+                    }))
+                };
+            } else {
+                newData = priceChart.data;
+            }
+
+            priceChart.data = newData;
+            priceChart.update();
+        }
+
+        // Generate sample data
+        function generateDailyData(crop) {
+            const basePrice = cropPrices[crop.toLowerCase()];
+            return Array.from({length: 7}, () => 
+                basePrice + (Math.random() - 0.5) * 2
+            );
+        }
+
+        function generateWeeklyData(crop) {
+            const basePrice = cropPrices[crop.toLowerCase()];
+            return Array.from({length: 4}, () => 
+                basePrice + (Math.random() - 0.5) * 3
+            );
+        }
+
+        // Calculate profit
+        function calculateProfit() {
+            const crop = document.getElementById('cropSelect').value;
+            const quantity = parseFloat(document.getElementById('quantity').value);
+            const cost = parseFloat(document.getElementById('cost').value);
+            
+            const currentPrice = cropPrices[crop];
+            const revenue = quantity * currentPrice;
+            const totalCost = quantity * cost;
+            const profit = revenue - totalCost;
+            const profitMargin = ((profit / revenue) * 100).toFixed(1);
+
+            document.getElementById('revenue').textContent = `$${revenue.toFixed(2)}`;
+            document.getElementById('totalCost').textContent = `$${totalCost.toFixed(2)}`;
+            document.getElementById('profitAmount').textContent = `$${profit.toFixed(2)}`;
+            document.getElementById('profitMargin').textContent = `${profitMargin}%`;
+            
+            document.getElementById('profitResult').classList.remove('hidden');
+        }
+
+        // Export report
+        function exportReport() {
+            alert('Market analysis report will be exported as PDF. This feature would integrate with a PDF generation service.');
+        }
+
+        // Set price alert
+        function setPriceAlert() {
+            alert('Price alert setup modal would open here. Users can set target prices and notification preferences.');
+        }
+
+        // Add new alert
+        function addNewAlert() {
+            alert('New price alert form would open here. Users can select crop, target price, and alert conditions.');
+        }
+
+        // Initialize chart when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initChart();
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            const userMenu = document.getElementById('user-menu');
+            const userButton = event.target.closest('button[onclick="toggleUserMenu()"]');
+            
+            if (!userButton && !userMenu.contains(event.target)) {
+                userMenu.classList.add('hidden');
+            }
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

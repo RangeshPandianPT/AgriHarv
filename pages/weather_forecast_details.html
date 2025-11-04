@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Forecast Details - AgriHarv</title>
+    <link rel="stylesheet" href="../css/main.css" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fagriharv2725back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-primary-50 to-accent-50">
+    <!-- Navigation Header -->
+    <nav class="sticky top-0 z-50 bg-surface/95 backdrop-blur-sm border-b border-border shadow-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-8-6z"/>
+                            <path d="M12 14l2 2 6-6" stroke="white" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <h1 class="text-xl font-bold text-primary font-heading">AgriHarv</h1>
+                        <p class="text-xs text-text-secondary">Smart Farming Solutions</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="main_dashboard.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth">Dashboard</a>
+                        <a href="soil_analysis_details.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth">Soil Analysis</a>
+                        <a href="weather_forecast_details.html" class="text-primary bg-primary-50 px-3 py-2 rounded-md text-sm font-medium">Weather</a>
+                        <a href="market_analysis.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth">Market</a>
+                        <a href="digital_journal.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth">Journal</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-text-secondary hover:text-primary p-2 rounded-md" onclick="toggleMobileMenu()">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-border">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="main_dashboard.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Dashboard</a>
+                <a href="soil_analysis_details.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Soil Analysis</a>
+                <a href="weather_forecast_details.html" class="text-primary bg-primary-50 block px-3 py-2 rounded-md text-base font-medium">Weather</a>
+                <a href="market_analysis.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Market</a>
+                <a href="digital_journal.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Journal</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Page Header -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-text-primary font-heading mb-2">Weather Forecast Details</h1>
+                    <p class="text-text-secondary">Comprehensive weather insights for agricultural planning</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="refreshWeatherData()" class="inline-flex items-center px-4 py-2 border border-border rounded-lg text-sm font-medium text-text-secondary hover:text-primary hover:border-primary transition-smooth">
+                        <svg class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                        </svg>
+                        Refresh
+                    </button>
+                    <div class="text-sm text-text-secondary">
+                        Last updated: <span class="font-medium">Sep 11, 2025 4:24 PM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Current Weather Overview -->
+        <section class="mb-8">
+            <div class="bg-gradient-to-r from-primary to-primary-600 rounded-xl p-6 text-white">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="md:col-span-2">
+                        <div class="flex items-center mb-4">
+                            <img src="https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop" alt="Current weather" class="w-16 h-16 rounded-full mr-4" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            <div>
+                                <h2 class="text-2xl font-bold">Partly Cloudy</h2>
+                                <p class="text-primary-100">Perfect for field work</p>
+                            </div>
+                        </div>
+                        <div class="text-4xl font-bold mb-2">72°F</div>
+                        <p class="text-primary-100">Feels like 75°F</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold">65%</div>
+                            <p class="text-primary-100 text-sm">Humidity</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold">8 mph</div>
+                            <p class="text-primary-100 text-sm">Wind Speed</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold">30%</div>
+                            <p class="text-primary-100 text-sm">Rain Chance</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold">29.92"</div>
+                            <p class="text-primary-100 text-sm">Pressure</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Weather Alerts -->
+        <section class="mb-8">
+            <div class="bg-warning-50 border border-warning-200 rounded-lg p-4">
+                <div class="flex items-start">
+                    <svg class="h-5 w-5 text-warning-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                    </svg>
+                    <div>
+                        <h3 class="text-sm font-medium text-warning-800">Agricultural Weather Alert</h3>
+                        <p class="text-sm text-warning-700 mt-1">Light frost possible early morning (Sept 13-14). Consider covering sensitive crops or delaying planting.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 14-Day Forecast -->
+        <section class="mb-8">
+            <div class="bg-surface rounded-xl shadow-soft p-6">
+                <h2 class="text-xl font-bold text-text-primary font-heading mb-6">14-Day Extended Forecast</h2>
+                
+                <!-- Forecast Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b border-border">
+                                <th class="text-left py-3 px-2 text-sm font-medium text-text-secondary">Date</th>
+                                <th class="text-left py-3 px-2 text-sm font-medium text-text-secondary">Weather</th>
+                                <th class="text-center py-3 px-2 text-sm font-medium text-text-secondary">High/Low</th>
+                                <th class="text-center py-3 px-2 text-sm font-medium text-text-secondary">Rain</th>
+                                <th class="text-center py-3 px-2 text-sm font-medium text-text-secondary">Humidity</th>
+                                <th class="text-center py-3 px-2 text-sm font-medium text-text-secondary">Wind</th>
+                                <th class="text-left py-3 px-2 text-sm font-medium text-text-secondary">Farm Activity</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-border">
+                            <tr class="hover:bg-primary-50 transition-smooth">
+                                <td class="py-4 px-2">
+                                    <div class="font-medium text-text-primary">Today</div>
+                                    <div class="text-sm text-text-secondary">Sep 11</div>
+                                </td>
+                                <td class="py-4 px-2">
+                                    <div class="flex items-center">
+                                        <img src="https://images.pixabay.com/photo/2013/07/12/18/20/sun-153251_960_720.png" alt="Partly cloudy" class="w-8 h-8 mr-2" />
+                                        <span class="text-sm">Partly Cloudy</span>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-2 text-center">
+                                    <div class="font-medium">78°/62°</div>
+                                </td>
+                                <td class="py-4 px-2 text-center">
+                                    <div class="text-primary font-medium">30%</div>
+                                </td>
+                                <td class="py-4 px-2 text-center">65%</td>
+                                <td class="py-4 px-2 text-center">8 mph</td>
+                                <td class="py-4 px-2">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-100 text-success-800">
+                                        Ideal for harvesting
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-primary-50 transition-smooth">
+                                <td class="py-4 px-2">
+                                    <div class="font-medium text-text-primary">Tomorrow</div>
+                                    <div class="text-sm text-text-secondary">Sep 12</div>
+                                </td>
+                                <td class="py-4 px-2">
+                                    <div class="flex items-center">
+                                        <img src="https://images.pixabay.com/photo/2013/07/12/18/20/sun-153251_960_720.png" alt="Sunny" class="w-8 h-8 mr-2" />
+                                        <span class="text-sm">Sunny</span>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-2 text-center">
+                                    <div class="font-medium">82°/58°</div>
+                                </td>
+                                <td class="py-4 px-2 text-center">
+                                    <div class="text-success font-medium">10%</div>
+                                </td>
+                                <td class="py-4 px-2 text-center">55%</td>
+                                <td class="py-4 px-2 text-center">12 mph</td>
+                                <td class="py-4 px-2">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-100 text-success-800">
+                                        Perfect for planting
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-primary-50 transition-smooth">
+                                <td class="py-4 px-2">
+                                    <div class="font-medium text-text-primary">Friday</div>
+                                    <div class="text-sm text-text-secondary">Sep 13</div>
+                                </td>
+                                <td class="py-4 px-2">
+                                    <div class="flex items-center">
+                                        <img src="https://images.pixabay.com/photo/2013/07/12/18/20/sun-153251_960_720.png" alt="Clear" class="w-8 h-8 mr-2" />
+                                        <span class="text-sm">Clear</span>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-2 text-center">
+                                    <div class="font-medium">75°/45°</div>
+                                </td>
+                                <td class="py-4 px-2 text-center">
+                                    <div class="text-success font-medium">5%</div>
+                                </td>
+                                <td class="py-4 px-2 text-center">48%</td>
+                                <td class="py-4 px-2 text-center">6 mph</td>
+                                <td class="py-4 px-2">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-warning-100 text-warning-800">
+                                        Frost risk - cover crops
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-primary-50 transition-smooth">
+                                <td class="py-4 px-2">
+                                    <div class="font-medium text-text-primary">Saturday</div>
+                                    <div class="text-sm text-text-secondary">Sep 14</div>
+                                </td>
+                                <td class="py-4 px-2">
+                                    <div class="flex items-center">
+                                        <img src="https://images.pixabay.com/photo/2013/07/12/18/20/sun-153251_960_720.png" alt="Partly cloudy" class="w-8 h-8 mr-2" />
+                                        <span class="text-sm">Partly Cloudy</span>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-2 text-center">
+                                    <div class="font-medium">79°/52°</div>
+                                </td>
+                                <td class="py-4 px-2 text-center">
+                                    <div class="text-primary font-medium">25%</div>
+                                </td>
+                                <td class="py-4 px-2 text-center">62%</td>
+                                <td class="py-4 px-2 text-center">9 mph</td>
+                                <td class="py-4 px-2">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-100 text-success-800">
+                                        Good for irrigation
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-primary-50 transition-smooth">
+                                <td class="py-4 px-2">
+                                    <div class="font-medium text-text-primary">Sunday</div>
+                                    <div class="text-sm text-text-secondary">Sep 15</div>
+                                </td>
+                                <td class="py-4 px-2">
+                                    <div class="flex items-center">
+                                        <img src="https://images.pixabay.com/photo/2013/07/12/18/20/sun-153251_960_720.png" alt="Rainy" class="w-8 h-8 mr-2" />
+                                        <span class="text-sm">Light Rain</span>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-2 text-center">
+                                    <div class="font-medium">73°/58°</div>
+                                </td>
+                                <td class="py-4 px-2 text-center">
+                                    <div class="text-error font-medium">80%</div>
+                                </td>
+                                <td class="py-4 px-2 text-center">78%</td>
+                                <td class="py-4 px-2 text-center">15 mph</td>
+                                <td class="py-4 px-2">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-error-100 text-error-800">
+                                        Avoid field work
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Show More Button -->
+                <div class="mt-6 text-center">
+                    <button onclick="showExtendedForecast()" class="inline-flex items-center px-4 py-2 border border-primary text-primary hover:bg-primary hover:text-white rounded-lg transition-smooth">
+                        <span>Show Full 14-Day Forecast</span>
+                        <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Weather Charts -->
+        <section class="mb-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Temperature Trend Chart -->
+                <div class="bg-surface rounded-xl shadow-soft p-6">
+                    <h3 class="text-lg font-bold text-text-primary font-heading mb-4">Temperature Trends</h3>
+                    <div class="h-64 bg-gradient-to-t from-primary-50 to-transparent rounded-lg flex items-end justify-center relative">
+                        <!-- Chart Placeholder -->
+                        <svg class="w-full h-full absolute inset-0" viewBox="0 0 400 200">
+                            <defs>
+                                <linearGradient id="tempGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#2D5A27;stop-opacity:0.8"/>
+                                    <stop offset="100%" style="stop-color:#2D5A27;stop-opacity:0.1"/>
+                                </linearGradient>
+                            </defs>
+                            <polyline fill="none" stroke="#2D5A27" stroke-width="3" points="20,160 60,140 100,120 140,100 180,110 220,90 260,85 300,95 340,105 380,115"/>
+                            <polyline fill="url(#tempGradient)" stroke="none" points="20,160 60,140 100,120 140,100 180,110 220,90 260,85 300,95 340,105 380,115 380,200 20,200"/>
+                            <!-- Data points -->
+                            <circle cx="20" cy="160" r="4" fill="#2D5A27"/>
+                            <circle cx="60" cy="140" r="4" fill="#2D5A27"/>
+                            <circle cx="100" cy="120" r="4" fill="#2D5A27"/>
+                            <circle cx="140" cy="100" r="4" fill="#2D5A27"/>
+                            <circle cx="180" cy="110" r="4" fill="#2D5A27"/>
+                            <circle cx="220" cy="90" r="4" fill="#2D5A27"/>
+                            <circle cx="260" cy="85" r="4" fill="#2D5A27"/>
+                            <circle cx="300" cy="95" r="4" fill="#2D5A27"/>
+                            <circle cx="340" cy="105" r="4" fill="#2D5A27"/>
+                            <circle cx="380" cy="115" r="4" fill="#2D5A27"/>
+                        </svg>
+                        <div class="absolute bottom-2 left-2 text-xs text-text-secondary">
+                            7-day temperature trend (°F)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rainfall Chart -->
+                <div class="bg-surface rounded-xl shadow-soft p-6">
+                    <h3 class="text-lg font-bold text-text-primary font-heading mb-4">Precipitation Forecast</h3>
+                    <div class="h-64 bg-gradient-to-t from-accent-50 to-transparent rounded-lg flex items-end justify-around relative p-4">
+                        <!-- Bar Chart -->
+                        <div class="flex items-end space-x-2 h-full w-full">
+                            <div class="bg-accent h-1/4 w-8 rounded-t"></div>
+                            <div class="bg-accent h-1/6 w-8 rounded-t"></div>
+                            <div class="bg-accent h-1/3 w-8 rounded-t"></div>
+                            <div class="bg-accent h-3/4 w-8 rounded-t"></div>
+                            <div class="bg-accent h-1/2 w-8 rounded-t"></div>
+                            <div class="bg-accent h-1/5 w-8 rounded-t"></div>
+                            <div class="bg-accent h-2/3 w-8 rounded-t"></div>
+                        </div>
+                        <div class="absolute bottom-2 left-2 text-xs text-text-secondary">
+                            7-day rainfall forecast (inches)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Agricultural Planning Panel -->
+        <section class="mb-8">
+            <div class="bg-surface rounded-xl shadow-soft p-6">
+                <h2 class="text-xl font-bold text-text-primary font-heading mb-6">Weather-Based Farm Planning</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Irrigation Schedule -->
+                    <div class="bg-primary-50 rounded-lg p-4">
+                        <div class="flex items-center mb-3">
+                            <svg class="h-6 w-6 text-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                            </svg>
+                            <h3 class="font-semibold text-primary">Irrigation Schedule</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex justify-between">
+                                <span>Today (Sep 11)</span>
+                                <span class="text-success font-medium">Skip - Natural moisture</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Tomorrow (Sep 12)</span>
+                                <span class="text-primary font-medium">Light watering</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Sep 15</span>
+                                <span class="text-success font-medium">Skip - Rain expected</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Crop Protection -->
+                    <div class="bg-warning-50 rounded-lg p-4">
+                        <div class="flex items-center mb-3">
+                            <svg class="h-6 w-6 text-warning mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                            </svg>
+                            <h3 class="font-semibold text-warning-700">Crop Protection</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-warning rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                                <span>Cover sensitive crops on Sep 13-14 (frost risk)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-success rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                                <span>Good conditions for pest control spraying</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Field Work -->
+                    <div class="bg-success-50 rounded-lg p-4">
+                        <div class="flex items-center mb-3">
+                            <svg class="h-6 w-6 text-success mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                            </svg>
+                            <h3 class="font-semibold text-success-700">Field Work</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex justify-between">
+                                <span>Harvesting</span>
+                                <span class="text-success font-medium">Ideal today</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Planting</span>
+                                <span class="text-success font-medium">Good Sep 12</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Soil prep</span>
+                                <span class="text-error font-medium">Avoid Sep 15</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Historical Weather Comparison -->
+        <section class="mb-8">
+            <div class="bg-surface rounded-xl shadow-soft p-6">
+                <h2 class="text-xl font-bold text-text-primary font-heading mb-6">Historical Weather Comparison</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center p-4 bg-accent-50 rounded-lg">
+                        <h3 class="font-semibold text-accent-700 mb-2">This Week</h3>
+                        <div class="text-2xl font-bold text-text-primary">75°F</div>
+                        <p class="text-sm text-text-secondary">Average Temperature</p>
+                        <div class="mt-2 text-sm">
+                            <span class="text-primary">↑ 3°F</span> vs last year
+                        </div>
+                    </div>
+                    
+                    <div class="text-center p-4 bg-accent-50 rounded-lg">
+                        <h3 class="font-semibold text-accent-700 mb-2">Rainfall</h3>
+                        <div class="text-2xl font-bold text-text-primary">1.2"</div>
+                        <p class="text-sm text-text-secondary">This Week</p>
+                        <div class="mt-2 text-sm">
+                            <span class="text-error">↓ 0.8"</span> vs last year
+                        </div>
+                    </div>
+                    
+                    <div class="text-center p-4 bg-accent-50 rounded-lg">
+                        <h3 class="font-semibold text-accent-700 mb-2">Growing Days</h3>
+                        <div class="text-2xl font-bold text-text-primary">185</div>
+                        <p class="text-sm text-text-secondary">This Season</p>
+                        <div class="mt-2 text-sm">
+                            <span class="text-success">↑ 12 days</span> vs average
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <svg class="h-6 w-6 text-accent mr-2" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M16 2L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-8-6z"/>
+                        <path d="M12 14l2 2 6-6" stroke="white" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="text-lg font-bold font-heading">AgriHarv</span>
+                </div>
+                <p class="text-primary-200 text-sm mb-4">Empowering farmers with smart agricultural solutions</p>
+                <p class="text-primary-300 text-xs">© 2025 AgriHarv. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function refreshWeatherData() {
+            // Simulate data refresh
+            alert('Weather data refreshed successfully!');
+        }
+
+        function showExtendedForecast() {
+            alert('Extended 14-day forecast would be displayed here with additional weather details and agricultural insights.');
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add any initialization code here
+            console.log('Weather Forecast Details page loaded');
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

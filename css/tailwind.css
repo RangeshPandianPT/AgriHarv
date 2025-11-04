@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary Colors */
+  --color-primary: #2D5A27; /* deep forest green */
+  --color-primary-50: #F0F9F0; /* very light green */
+  --color-primary-100: #D4F1D4; /* light green */
+  --color-primary-200: #A8E6A8; /* medium light green */
+  --color-primary-300: #7DD87D; /* medium green */
+  --color-primary-400: #52C952; /* bright green */
+  --color-primary-500: #2D5A27; /* deep forest green - main */
+  --color-primary-600: #245020; /* darker forest green */
+  --color-primary-700: #1B3C18; /* very dark green */
+  --color-primary-800: #122810; /* extremely dark green */
+  --color-primary-900: #091408; /* almost black green */
+
+  /* Secondary Colors */
+  --color-secondary: #8B4513; /* rich earth brown */
+  --color-secondary-50: #FBF7F3; /* very light brown */
+  --color-secondary-100: #F5E6D3; /* light brown */
+  --color-secondary-200: #EBCCA7; /* medium light brown */
+  --color-secondary-300: #E1B37B; /* medium brown */
+  --color-secondary-400: #D7994F; /* bright brown */
+  --color-secondary-500: #8B4513; /* rich earth brown - main */
+  --color-secondary-600: #7A3D11; /* darker brown */
+  --color-secondary-700: #5C2E0D; /* very dark brown */
+  --color-secondary-800: #3D1F08; /* extremely dark brown */
+  --color-secondary-900: #1F0F04; /* almost black brown */
+
+  /* Accent Colors */
+  --color-accent: #F4A460; /* golden harvest tone */
+  --color-accent-50: #FEF9F4; /* very light golden */
+  --color-accent-100: #FDF0E1; /* light golden */
+  --color-accent-200: #FBE1C3; /* medium light golden */
+  --color-accent-300: #F9D2A5; /* medium golden */
+  --color-accent-400: #F7C387; /* bright golden */
+  --color-accent-500: #F4A460; /* golden harvest tone - main */
+  --color-accent-600: #E8954D; /* darker golden */
+  --color-accent-700: #D4863A; /* very dark golden */
+  --color-accent-800: #A66B2E; /* extremely dark golden */
+  --color-accent-900: #785022; /* almost black golden */
+
+  /* Background Colors */
+  --color-background: #FAFAF9; /* warm off-white */
+  --color-surface: #FFFFFF; /* pure white */
+
+  /* Text Colors */
+  --color-text-primary: #1F2937; /* deep charcoal - gray-800 */
+  --color-text-secondary: #6B7280; /* medium gray - gray-500 */
+
+  /* Status Colors */
+  --color-success: #059669; /* vibrant green - emerald-600 */
+  --color-success-50: #ECFDF5; /* very light success green */
+  --color-success-100: #D1FAE5; /* light success green */
+  --color-success-500: #059669; /* vibrant green - main */
+
+  --color-warning: #D97706; /* amber orange - amber-600 */
+  --color-warning-50: #FFFBEB; /* very light warning orange */
+  --color-warning-100: #FEF3C7; /* light warning orange */
+  --color-warning-500: #D97706; /* amber orange - main */
+
+  --color-error: #DC2626; /* clear red - red-600 */
+  --color-error-50: #FEF2F2; /* very light error red */
+  --color-error-100: #FEE2E2; /* light error red */
+  --color-error-500: #DC2626; /* clear red - main */
+
+  /* Border Colors */
+  --color-border: #E5E7EB; /* light gray - gray-200 */
+  --color-border-light: #F3F4F6; /* very light gray - gray-100 */
+}
+
+@layer base {
+  body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .transition-smooth {
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .transition-gentle {
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .shadow-soft {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .shadow-soft-hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+}

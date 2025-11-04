@@ -1,0 +1,7 @@
+/home/user/AgriHarv/backend/src/main/java/com/example/agriharvbackend/controller/SoilAnalysisController.java
+/home/user/AgriHarv/backend/src/main/java/com/example/agriharvbackend/model/SoilAnalysis.java
+/home/user/AgriHarv/backend/src/main/java/com/example/agriharvbackend/AgriharvBackendApplication.java
+/home/user/AgriHarv/backend/src/main/java/com/example/agriharvbackend/repository/UserRepository.java
+/home/user/AgriHarv/backend/src/main/java/com/example/agriharvbackend/model/User.java
+/home/user/AgriHarv/backend/src/main/java/com/example/agriharvbackend/repository/SoilAnalysisRepository.java
+/home/user/AgriHarv/backend/src/main/java/com/example/agriharvbackend/controller/UserController.java

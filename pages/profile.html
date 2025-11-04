@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile - AgriHarv</title>
+    <link rel="stylesheet" href="../css/main.css" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fagriharv2725back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="min-h-screen bg-background">
+    <!-- Navigation Header -->
+    <nav class="sticky top-0 z-50 bg-surface/95 backdrop-blur-sm border-b border-border shadow-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-8-6z"/>
+                            <path d="M12 14l2 2 6-6" stroke="white" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <h1 class="text-xl font-bold text-primary font-heading">AgriHarv</h1>
+                        <p class="text-xs text-text-secondary">Smart Farming Solutions</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="main_dashboard.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth">Dashboard</a>
+                        <a href="soil_analysis_details.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth">Soil Analysis</a>
+                        <a href="weather_forecast_details.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth">Weather</a>
+                        <a href="market_analysis.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth">Market</a>
+                        <a href="digital_journal.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth">Journal</a>
+                    </div>
+                </div>
+
+                <!-- User Profile -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="relative">
+                        <button class="flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-primary" onclick="toggleUserMenu()">
+                            <img id="nav-profile-image" class="h-8 w-8 rounded-full object-cover" src="./Profile.png" alt="User profile" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            <span id="nav-user-name" class="ml-2 text-text-primary font-medium">RangeshPandian PT</span>
+                            <svg class="ml-1 h-4 w-4 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        
+                        <!-- User Dropdown Menu -->
+                        <div id="user-menu" class="hidden absolute right-0 mt-2 w-48 bg-surface rounded-lg shadow-lg border border-border">
+                            <div class="py-1">
+                                <a href="profile.html" class="block px-4 py-2 text-sm text-primary hover:bg-primary-50 transition-smooth">Profile Settings</a>
+                                <a href="javascript:void(0)" class="block px-4 py-2 text-sm text-text-primary hover:bg-primary-50 transition-smooth">Farm Details</a>
+                                <div class="border-t border-border"></div>
+                                <a href="login.html" class="block px-4 py-2 text-sm text-error hover:bg-error-50 transition-smooth">Sign Out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-text-secondary hover:text-primary p-2 rounded-md" onclick="toggleMobileMenu()">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-border">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="main_dashboard.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Dashboard</a>
+                <a href="soil_analysis_details.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Soil Analysis</a>
+                <a href="weather_forecast_details.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Weather</a>
+                <a href="market_analysis.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Market</a>
+                <a href="digital_journal.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Journal</a>
+                <div class="border-t border-border mt-2 pt-2">
+                    <a href="profile.html" class="text-primary block px-3 py-2 rounded-md text-base font-medium transition-smooth">Profile</a>
+                    <a href="login.html" class="text-error block px-3 py-2 rounded-md text-base font-medium transition-smooth">Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Success/Error Messages -->
+    <div id="notification" class="hidden fixed top-20 right-4 max-w-sm bg-surface border border-border rounded-lg shadow-lg z-50">
+        <div class="p-4 flex items-start">
+            <div id="notification-icon" class="flex-shrink-0 mr-3">
+                <!-- Icon will be inserted here -->
+            </div>
+            <div class="flex-1">
+                <p id="notification-title" class="text-sm font-medium text-text-primary"></p>
+                <p id="notification-message" class="text-xs text-text-secondary mt-1"></p>
+            </div>
+            <button onclick="closeNotification()" class="ml-2 text-text-secondary hover:text-text-primary">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+        <!-- Header Section -->
+        <section class="bg-gradient-to-r from-primary to-primary-600 text-white py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8">
+                    <!-- Profile Image -->
+                    <div class="relative">
+                        <img id="profile-image" class="h-32 w-32 rounded-full object-cover border-4 border-white/20" src="./Profile.png" alt="User profile" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                        <input type="file" id="profile-image-input" accept="image/*" class="hidden" onchange="handleProfileImageChange(event)" />
+                        <button onclick="document.getElementById('profile-image-input').click()" class="absolute bottom-2 right-2 bg-accent hover:bg-accent-600 p-2 rounded-full shadow-soft transition-smooth">
+                            <svg class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93l.707-.707A1 1 0 017.343 6h9.314a1 1 0 01.707.293L18.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Profile Info -->
+                    <div class="text-center md:text-left">
+                        <h1 id="header-name" class="text-3xl font-bold font-heading mb-2">RANGESH </h1>
+                        <p id="header-email" class="text-primary-100 text-lg mb-4">farmer@agriharv.com</p>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                            <span id="header-location" class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-white/20 text-white">
+                                <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                                Greenfield Valley, CA
+                            </span>
+                            <span id="header-farm-size" class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-white/20 text-white">
+                                <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
+                                </svg>
+                                125 Acres
+                            </span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-white/20 text-white">
+                                <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                </svg>
+                                Member since 2020
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Content -->
+        <section class="py-12 bg-background">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Profile Information -->
+                    <div class="lg:col-span-2 space-y-8">
+                        <!-- Personal Information -->
+                        <div class="bg-surface rounded-xl shadow-soft border border-border p-6">
+                            <div class="flex items-center justify-between mb-6">
+                                <h2 class="text-2xl font-bold text-text-primary font-heading">Personal Information</h2>
+                                <div class="flex space-x-2">
+                                    <button id="edit-personal-btn" onclick="editPersonalInfo()" class="text-primary hover:text-primary-600 font-medium text-sm transition-smooth">
+                                        Edit
+                                    </button>
+                                    <button id="save-personal-btn" onclick="savePersonalInfo()" class="hidden bg-primary hover:bg-primary-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-smooth">
+                                        Save
+                                    </button>
+                                    <button id="cancel-personal-btn" onclick="cancelPersonalEdit()" class="hidden bg-border hover:bg-border-secondary text-text-primary px-4 py-2 rounded-lg text-sm font-medium transition-smooth">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <form id="personal-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-text-secondary mb-2">Full Name <span class="text-error">*</span></label>
+                                    <p id="display-fullname" class="text-text-primary font-medium">John Michael Farmer</p>
+                                    <input id="input-fullname" type="text" value="John Michael Farmer" required class="hidden w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                                    <span id="error-fullname" class="hidden text-error text-xs mt-1"></span>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-text-secondary mb-2">Email Address <span class="text-error">*</span></label>
+                                    <p id="display-email" class="text-text-primary font-medium">farmer@agriharv.com</p>
+                                    <input id="input-email" type="email" value="farmer@agriharv.com" required class="hidden w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                                    <span id="error-email" class="hidden text-error text-xs mt-1"></span>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-text-secondary mb-2">Phone Number</label>
+                                    <p id="display-phone" class="text-text-primary font-medium">+1 (555) 123-4567</p>
+                                    <input id="input-phone" type="tel" value="+1 (555) 123-4567" class="hidden w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                                    <span id="error-phone" class="hidden text-error text-xs mt-1"></span>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-text-secondary mb-2">Date of Birth</label>
+                                    <p id="display-dob" class="text-text-primary font-medium">March 15, 1985</p>
+                                    <input id="input-dob" type="date" value="1985-03-15" class="hidden w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-text-secondary mb-2">Gender</label>
+                                    <p id="display-gender" class="text-text-primary font-medium">Male</p>
+                                    <select id="input-gender" class="hidden w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                        <option value="Prefer not to say">Prefer not to say</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-text-secondary mb-2">Experience</label>
+                                    <p id="display-experience" class="text-text-primary font-medium">15+ Years</p>
+                                    <select id="input-experience" class="hidden w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                        <option value="Less than 1 year">Less than 1 year</option>
+                                        <option value="1-2 years">1-2 years</option>
+                                        <option value="3-5 years">3-5 years</option>
+                                        <option value="6-10 years">6-10 years</option>
+                                        <option value="11-15 years">11-15 years</option>
+                                        <option value="15+ Years">15+ Years</option>
+                                        <option value="20+ years">20+ years</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Farm Information -->
+                        <div class="bg-surface rounded-xl shadow-soft border border-border p-6">
+                            <div class="flex items-center justify-between mb-6">
+                                <h2 class="text-2xl font-bold text-text-primary font-heading">Farm Information</h2>
+                                <div class="flex space-x-2">
+                                    <button id="edit-farm-btn" onclick="editFarmInfo()" class="text-primary hover:text-primary-600 font-medium text-sm transition-smooth">
+                                        Edit
+                                    </button>
+                                    <button id="save-farm-btn" onclick="saveFarmInfo()" class="hidden bg-primary hover:bg-primary-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-smooth">
+                                        Save
+                                    </button>
+                                    <button id="cancel-farm-btn" onclick="cancelFarmEdit()" class="hidden bg-border hover:bg-border-secondary text-text-primary px-4 py-2 rounded-lg text-sm font-medium transition-smooth">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <form id="farm-form">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-medium text-text-secondary mb-2">Farm Name <span class="text-error">*</span></label>
+                                        <p id="display-farmname" class="text-text-primary font-medium">Green Valley Organic Farm</p>
+                                        <input id="input-farmname" type="text" value="Green Valley Organic Farm" required class="hidden w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                                        <span id="error-farmname" class="hidden text-error text-xs mt-1"></span>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-text-secondary mb-2">Farm Size <span class="text-error">*</span></label>
+                                        <p id="display-farmsize" class="text-text-primary font-medium">125 Acres</p>
+                                        <input id="input-farmsize" type="text" value="125 Acres" required class="hidden w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                                        <span id="error-farmsize" class="hidden text-error text-xs mt-1"></span>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-text-secondary mb-2">Location <span class="text-error">*</span></label>
+                                        <p id="display-location" class="text-text-primary font-medium">Greenfield Valley, California</p>
+                                        <input id="input-location" type="text" value="Greenfield Valley, California" required class="hidden w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                                        <span id="error-location" class="hidden text-error text-xs mt-1"></span>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-text-secondary mb-2">Farm Type</label>
+                                        <p id="display-farmtype" class="text-text-primary font-medium">Organic Mixed Crops</p>
+                                        <select id="input-farmtype" class="hidden w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                            <option value="Organic Mixed Crops">Organic Mixed Crops</option>
+                                            <option value="Conventional Mixed Crops">Conventional Mixed Crops</option>
+                                            <option value="Dairy Farm">Dairy Farm</option>
+                                            <option value="Livestock Ranch">Livestock Ranch</option>
+                                            <option value="Vegetable Farm">Vegetable Farm</option>
+                                            <option value="Fruit Orchard">Fruit Orchard</option>
+                                            <option value="Grain Farm">Grain Farm</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-text-secondary mb-2">Primary Crops</label>
+                                        <p id="display-crops" class="text-text-primary font-medium">Rice, Wheat, Corn</p>
+                                        <input id="input-crops" type="text" value="Rice, Wheat, Corn" placeholder="e.g., Rice, Wheat, Corn" class="hidden w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium text-text-secondary mb-2">Certification</label>
+                                        <p id="display-certification" class="text-text-primary font-medium">USDA Organic Certified</p>
+                                        <select id="input-certification" class="hidden w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                            <option value="USDA Organic Certified">USDA Organic Certified</option>
+                                            <option value="Certified Naturally Grown">Certified Naturally Grown</option>
+                                            <option value="Rainforest Alliance Certified">Rainforest Alliance Certified</option>
+                                            <option value="Fair Trade Certified">Fair Trade Certified</option>
+                                            <option value="Non-GMO Project Verified">Non-GMO Project Verified</option>
+                                            <option value="None">None</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-6">
+                                    <label class="block text-sm font-medium text-text-secondary mb-2">Farm Description</label>
+                                    <p id="display-description" class="text-text-primary leading-relaxed">
+                                        Green Valley Organic Farm is a sustainable agricultural operation focused on producing high-quality organic crops. 
+                                        We implement modern farming techniques while maintaining environmental responsibility and soil health.
+                                    </p>
+                                    <textarea id="input-description" rows="4" class="hidden w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Describe your farm...">Green Valley Organic Farm is a sustainable agricultural operation focused on producing high-quality organic crops. We implement modern farming techniques while maintaining environmental responsibility and soil health.</textarea>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Account Settings -->
+                        <div class="bg-surface rounded-xl shadow-soft border border-border p-6">
+                            <h2 class="text-2xl font-bold text-text-primary font-heading mb-6">Account Settings</h2>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between p-4 bg-primary-50 rounded-lg">
+                                    <div>
+                                        <h3 class="font-medium text-text-primary">Email Notifications</h3>
+                                        <p class="text-sm text-text-secondary">Receive updates about weather alerts and farm activities</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input id="email-notifications" type="checkbox" checked class="sr-only peer" onchange="saveAccountSettings()" />
+                                        <div class="w-11 h-6 bg-border peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                    </label>
+                                </div>
+                                
+                                <div class="flex items-center justify-between p-4 bg-accent-50 rounded-lg">
+                                    <div>
+                                        <h3 class="font-medium text-text-primary">SMS Alerts</h3>
+                                        <p class="text-sm text-text-secondary">Get text messages for urgent weather warnings</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input id="sms-alerts" type="checkbox" class="sr-only peer" onchange="saveAccountSettings()" />
+                                        <div class="w-11 h-6 bg-border peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-accent-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent"></div>
+                                    </label>
+                                </div>
+                                
+                                <div class="flex items-center justify-between p-4 bg-secondary-50 rounded-lg">
+                                    <div>
+                                        <h3 class="font-medium text-text-primary">Data Analytics</h3>
+                                        <p class="text-sm text-text-secondary">Share anonymous data to help improve farming insights</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input id="data-analytics" type="checkbox" checked class="sr-only peer" onchange="saveAccountSettings()" />
+                                        <div class="w-11 h-6 bg-border peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-secondary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="space-y-8">
+                        <!-- Quick Stats -->
+                        <div class="bg-surface rounded-xl shadow-soft border border-border p-6">
+                            <h3 class="text-lg font-semibold text-text-primary mb-4">Farm Statistics</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="text-center p-4 bg-primary-50 rounded-lg">
+                                    <div id="stat-acres" class="text-2xl font-bold text-primary">125</div>
+                                    <div class="text-sm text-text-secondary">Total Acres</div>
+                                </div>
+                                
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="text-center p-3 bg-success-50 rounded-lg">
+                                        <div class="text-lg font-semibold text-success">85%</div>
+                                        <div class="text-xs text-text-secondary">Planted</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-accent-50 rounded-lg">
+                                        <div class="text-lg font-semibold text-accent">3</div>
+                                        <div class="text-xs text-text-secondary">Crop Types</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="text-center p-3 bg-secondary-50 rounded-lg">
+                                        <div class="text-lg font-semibold text-secondary">47</div>
+                                        <div class="text-xs text-text-secondary">Journal Entries</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-primary-50 rounded-lg">
+                                        <div class="text-lg font-semibold text-primary">5 yrs</div>
+                                        <div class="text-xs text-text-secondary">On Platform</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activity -->
+                        <div class="bg-surface rounded-xl shadow-soft border border-border p-6">
+                            <h3 class="text-lg font-semibold text-text-primary mb-4">Recent Activity</h3>
+                            
+                            <div class="space-y-3">
+                                <div class="flex items-start space-x-3 p-3 bg-background rounded-lg">
+                                    <div class="flex-shrink-0 w-2 h-2 bg-success rounded-full mt-2"></div>
+                                    <div>
+                                        <p class="text-sm text-text-primary font-medium">Updated profile information</p>
+                                        <p class="text-xs text-text-secondary">Just now</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-3 p-3 bg-background rounded-lg">
+                                    <div class="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2"></div>
+                                    <div>
+                                        <p class="text-sm text-text-primary font-medium">Updated soil analysis data</p>
+                                        <p class="text-xs text-text-secondary">2 hours ago</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-3 p-3 bg-background rounded-lg">
+                                    <div class="flex-shrink-0 w-2 h-2 bg-accent rounded-full mt-2"></div>
+                                    <div>
+                                        <p class="text-sm text-text-primary font-medium">Added new journal entry</p>
+                                        <p class="text-xs text-text-secondary">1 day ago</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-3 p-3 bg-background rounded-lg">
+                                    <div class="flex-shrink-0 w-2 h-2 bg-secondary rounded-full mt-2"></div>
+                                    <div>
+                                        <p class="text-sm text-text-primary font-medium">Checked weather forecast</p>
+                                        <p class="text-xs text-text-secondary">2 days ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="bg-surface rounded-xl shadow-soft border border-border p-6">
+                            <h3 class="text-lg font-semibold text-text-primary mb-4">Quick Actions</h3>
+                            
+                            <div class="space-y-3">
+                                <button onclick="changePassword()" class="w-full text-left p-3 bg-primary-50 hover:bg-primary-100 rounded-lg transition-smooth">
+                                    <div class="flex items-center">
+                                        <svg class="h-4 w-4 text-primary mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+                                        </svg>
+                                        <div>
+                                            <div class="text-sm font-medium text-text-primary">Change Password</div>
+                                            <div class="text-xs text-text-secondary">Update account security</div>
+                                        </div>
+                                    </div>
+                                </button>
+                                
+                                <button onclick="exportData()" class="w-full text-left p-3 bg-accent-50 hover:bg-accent-100 rounded-lg transition-smooth">
+                                    <div class="flex items-center">
+                                        <svg class="h-4 w-4 text-accent mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                                        </svg>
+                                        <div>
+                                            <div class="text-sm font-medium text-text-primary">Export Data</div>
+                                            <div class="text-xs text-text-secondary">Download your farm data</div>
+                                        </div>
+                                    </div>
+                                </button>
+                                
+                                <button onclick="deleteAccount()" class="w-full text-left p-3 bg-error-50 hover:bg-error-100 rounded-lg transition-smooth">
+                                    <div class="flex items-center">
+                                        <svg class="h-4 w-4 text-error mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                        </svg>
+                                        <div>
+                                            <div class="text-sm font-medium text-text-primary">Delete Account</div>
+                                            <div class="text-xs text-text-secondary">Permanently remove account</div>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <svg class="h-6 w-6 text-accent mr-2" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M16 2L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-8-6z"/>
+                        <path d="M12 14l2 2 6-6" stroke="white" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="text-lg font-bold font-heading">AgriHarv</span>
+                </div>
+                <p class="text-primary-200 text-sm mb-4">Empowering farmers with smart agricultural solutions</p>
+                <p class="text-primary-300 text-xs">© 2025 AgriHarv. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Store original values for cancellation
+        let originalPersonalData = {};
+        let originalFarmData = {};
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            storeOriginalData();
+        });
+
+        function storeOriginalData() {
+            // Store personal information
+            originalPersonalData = {
+                fullname: document.getElementById('display-fullname').textContent,
+                email: document.getElementById('display-email').textContent,
+                phone: document.getElementById('display-phone').textContent,
+                dob: document.getElementById('display-dob').textContent,
+                gender: document.getElementById('display-gender').textContent,
+                experience: document.getElementById('display-experience').textContent
+            };
+
+            // Store farm information
+            originalFarmData = {
+                farmname: document.getElementById('display-farmname').textContent,
+                farmsize: document.getElementById('display-farmsize').textContent,
+                location: document.getElementById('display-location').textContent,
+                farmtype: document.getElementById('display-farmtype').textContent,
+                crops: document.getElementById('display-crops').textContent,
+                certification: document.getElementById('display-certification').textContent,
+                description: document.getElementById('display-description').textContent
+            };
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function toggleUserMenu() {
+            const menu = document.getElementById('user-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function showNotification(title, message, type = 'success') {
+            const notification = document.getElementById('notification');
+            const iconContainer = document.getElementById('notification-icon');
+            const titleElement = document.getElementById('notification-title');
+            const messageElement = document.getElementById('notification-message');
+
+            // Set content
+            titleElement.textContent = title;
+            messageElement.textContent = message;
+
+            // Set icon based on type
+            if (type === 'success') {
+                iconContainer.innerHTML = `
+                    <svg class="h-5 w-5 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                `;
+            } else if (type === 'error') {
+                iconContainer.innerHTML = `
+                    <svg class="h-5 w-5 text-error" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.732 15.5c-.77.833.192 2.5 1.732 2.5z"/>
+                    </svg>
+                `;
+            }
+
+            // Show notification
+            notification.classList.remove('hidden');
+
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                notification.classList.add('hidden');
+            }, 5000);
+        }
+
+        function closeNotification() {
+            document.getElementById('notification').classList.add('hidden');
+        }
+
+        function validateForm(formType) {
+            let isValid = true;
+            const errors = {};
+
+            if (formType === 'personal') {
+                const fullname = document.getElementById('input-fullname').value.trim();
+                const email = document.getElementById('input-email').value.trim();
+                const phone = document.getElementById('input-phone').value.trim();
+
+                // Validate fullname
+                if (!fullname) {
+                    errors.fullname = 'Full name is required';
+                    isValid = false;
+                } else if (fullname.length < 2) {
+                    errors.fullname = 'Full name must be at least 2 characters';
+                    isValid = false;
+                }
+
+                // Validate email
+                if (!email) {
+                    errors.email = 'Email is required';
+                    isValid = false;
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    errors.email = 'Please enter a valid email address';
+                    isValid = false;
+                }
+
+                // Validate phone (optional but if provided, should be valid)
+                if (phone && !/^[\+]?[1-9][\d]{0,15}$/.test(phone.replace(/[\s\(\)\-]/g, ''))) {
+                    errors.phone = 'Please enter a valid phone number';
+                    isValid = false;
+                }
+            } else if (formType === 'farm') {
+                const farmname = document.getElementById('input-farmname').value.trim();
+                const farmsize = document.getElementById('input-farmsize').value.trim();
+                const location = document.getElementById('input-location').value.trim();
+
+                // Validate farm name
+                if (!farmname) {
+                    errors.farmname = 'Farm name is required';
+                    isValid = false;
+                }
+
+                // Validate farm size
+                if (!farmsize) {
+                    errors.farmsize = 'Farm size is required';
+                    isValid = false;
+                }
+
+                // Validate location
+                if (!location) {
+                    errors.location = 'Location is required';
+                    isValid = false;
+                }
+            }
+
+            // Display errors
+            Object.keys(errors).forEach(field => {
+                const errorElement = document.getElementById(`error-${field}`);
+                if (errorElement) {
+                    errorElement.textContent = errors[field];
+                    errorElement.classList.remove('hidden');
+                    // Add error styling to input
+                    const inputElement = document.getElementById(`input-${field}`);
+                    if (inputElement) {
+                        inputElement.classList.add('border-error');
+                    }
+                }
+            });
+
+            // Clear errors for valid fields
+            const allFields = formType === 'personal' 
+                ? ['fullname', 'email', 'phone'] 
+                : ['farmname', 'farmsize', 'location'];
+                
+            allFields.forEach(field => {
+                if (!errors[field]) {
+                    const errorElement = document.getElementById(`error-${field}`);
+                    if (errorElement) {
+                        errorElement.classList.add('hidden');
+                        // Remove error styling from input
+                        const inputElement = document.getElementById(`input-${field}`);
+                        if (inputElement) {
+                            inputElement.classList.remove('border-error');
+                        }
+                    }
+                }
+            });
+
+            return isValid;
+        }
+
+        function editPersonalInfo() {
+            // Show input fields, hide display fields
+            const fields = ['fullname', 'email', 'phone', 'dob', 'gender', 'experience'];
+            fields.forEach(field => {
+                document.getElementById(`display-${field}`).classList.add('hidden');
+                document.getElementById(`input-${field}`).classList.remove('hidden');
+            });
+
+            // Show save/cancel buttons, hide edit button
+            document.getElementById('edit-personal-btn').classList.add('hidden');
+            document.getElementById('save-personal-btn').classList.remove('hidden');
+            document.getElementById('cancel-personal-btn').classList.remove('hidden');
+        }
+
+        function savePersonalInfo() {
+            // Validate form
+            if (!validateForm('personal')) {
+                showNotification('Validation Error', 'Please fix the errors and try again.', 'error');
+                return;
+            }
+
+            // Get values from inputs
+            const fullname = document.getElementById('input-fullname').value.trim();
+            const email = document.getElementById('input-email').value.trim();
+            const phone = document.getElementById('input-phone').value.trim();
+            const dob = document.getElementById('input-dob').value;
+            const gender = document.getElementById('input-gender').value;
+            const experience = document.getElementById('input-experience').value;
+
+            // Format date for display
+            let displayDob = dob;
+            if (dob) {
+                const date = new Date(dob);
+                displayDob = date.toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+            }
+
+            // Update display fields
+            document.getElementById('display-fullname').textContent = fullname;
+            document.getElementById('display-email').textContent = email;
+            document.getElementById('display-phone').textContent = phone;
+            document.getElementById('display-dob').textContent = displayDob;
+            document.getElementById('display-gender').textContent = gender;
+            document.getElementById('display-experience').textContent = experience;
+
+            // Update header information
+            document.getElementById('header-name').textContent = fullname.split(' ')[0] + ' ' + (fullname.split(' ')[1] || '').charAt(0) + (fullname.split(' ')[1] ? fullname.split(' ')[1].slice(1) : '');
+            document.getElementById('header-email').textContent = email;
+            document.getElementById('nav-user-name').textContent = fullname.split(' ')[0] + ' ' + (fullname.split(' ')[1] || '').charAt(0) + (fullname.split(' ')[1] ? fullname.split(' ')[1].slice(1) : '');
+
+            // Store new original data
+            originalPersonalData = {
+                fullname: fullname,
+                email: email,
+                phone: phone,
+                dob: displayDob,
+                gender: gender,
+                experience: experience
+            };
+
+            // Hide input fields, show display fields
+            const fields = ['fullname', 'email', 'phone', 'dob', 'gender', 'experience'];
+            fields.forEach(field => {
+                document.getElementById(`display-${field}`).classList.remove('hidden');
+                document.getElementById(`input-${field}`).classList.add('hidden');
+            });
+
+            // Show edit button, hide save/cancel buttons
+            document.getElementById('edit-personal-btn').classList.remove('hidden');
+            document.getElementById('save-personal-btn').classList.add('hidden');
+            document.getElementById('cancel-personal-btn').classList.add('hidden');
+
+            // Show success notification
+            showNotification('Success', 'Personal information updated successfully!', 'success');
+
+            // Add to recent activity
+            addRecentActivity('Updated personal information', 'Just now');
+        }
+
+        function cancelPersonalEdit() {
+            // Restore original values
+            document.getElementById('input-fullname').value = originalPersonalData.fullname;
+            document.getElementById('input-email').value = originalPersonalData.email;
+            document.getElementById('input-phone').value = originalPersonalData.phone;
+            // Convert date back for input
+            if (originalPersonalData.dob !== 'March 15, 1985') {
+                document.getElementById('input-dob').value = '1985-03-15';
+            }
+            document.getElementById('input-gender').value = originalPersonalData.gender;
+            document.getElementById('input-experience').value = originalPersonalData.experience;
+
+            // Clear any error messages
+            const errorFields = ['fullname', 'email', 'phone'];
+            errorFields.forEach(field => {
+                const errorElement = document.getElementById(`error-${field}`);
+                if (errorElement) {
+                    errorElement.classList.add('hidden');
+                    // Remove error styling
+                    const inputElement = document.getElementById(`input-${field}`);
+                    if (inputElement) {
+                        inputElement.classList.remove('border-error');
+                    }
+                }
+            });
+
+            // Hide input fields, show display fields
+            const fields = ['fullname', 'email', 'phone', 'dob', 'gender', 'experience'];
+            fields.forEach(field => {
+                document.getElementById(`display-${field}`).classList.remove('hidden');
+                document.getElementById(`input-${field}`).classList.add('hidden');
+            });
+
+            // Show edit button, hide save/cancel buttons
+            document.getElementById('edit-personal-btn').classList.remove('hidden');
+            document.getElementById('save-personal-btn').classList.add('hidden');
+            document.getElementById('cancel-personal-btn').classList.add('hidden');
+        }
+
+        function editFarmInfo() {
+            // Show input fields, hide display fields
+            const fields = ['farmname', 'farmsize', 'location', 'farmtype', 'crops', 'certification', 'description'];
+            fields.forEach(field => {
+                document.getElementById(`display-${field}`).classList.add('hidden');
+                document.getElementById(`input-${field}`).classList.remove('hidden');
+            });
+
+            // Show save/cancel buttons, hide edit button
+            document.getElementById('edit-farm-btn').classList.add('hidden');
+            document.getElementById('save-farm-btn').classList.remove('hidden');
+            document.getElementById('cancel-farm-btn').classList.remove('hidden');
+        }
+
+        function saveFarmInfo() {
+            // Validate form
+            if (!validateForm('farm')) {
+                showNotification('Validation Error', 'Please fix the errors and try again.', 'error');
+                return;
+            }
+
+            // Get values from inputs
+            const farmname = document.getElementById('input-farmname').value.trim();
+            const farmsize = document.getElementById('input-farmsize').value.trim();
+            const location = document.getElementById('input-location').value.trim();
+            const farmtype = document.getElementById('input-farmtype').value;
+            const crops = document.getElementById('input-crops').value.trim();
+            const certification = document.getElementById('input-certification').value;
+            const description = document.getElementById('input-description').value.trim();
+
+            // Update display fields
+            document.getElementById('display-farmname').textContent = farmname;
+            document.getElementById('display-farmsize').textContent = farmsize;
+            document.getElementById('display-location').textContent = location;
+            document.getElementById('display-farmtype').textContent = farmtype;
+            document.getElementById('display-crops').textContent = crops;
+            document.getElementById('display-certification').textContent = certification;
+            document.getElementById('display-description').textContent = description;
+
+            // Update header information
+            document.getElementById('header-location').innerHTML = `
+                <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                ${location}
+            `;
+            document.getElementById('header-farm-size').innerHTML = `
+                <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
+                </svg>
+                ${farmsize}
+            `;
+
+            // Update statistics
+            const acresValue = farmsize.match(/\d+/);
+            if (acresValue) {
+                document.getElementById('stat-acres').textContent = acresValue[0];
+            }
+
+            // Store new original data
+            originalFarmData = {
+                farmname: farmname,
+                farmsize: farmsize,
+                location: location,
+                farmtype: farmtype,
+                crops: crops,
+                certification: certification,
+                description: description
+            };
+
+            // Hide input fields, show display fields
+            const fields = ['farmname', 'farmsize', 'location', 'farmtype', 'crops', 'certification', 'description'];
+            fields.forEach(field => {
+                document.getElementById(`display-${field}`).classList.remove('hidden');
+                document.getElementById(`input-${field}`).classList.add('hidden');
+            });
+
+            // Show edit button, hide save/cancel buttons
+            document.getElementById('edit-farm-btn').classList.remove('hidden');
+            document.getElementById('save-farm-btn').classList.add('hidden');
+            document.getElementById('cancel-farm-btn').classList.add('hidden');
+
+            // Show success notification
+            showNotification('Success', 'Farm information updated successfully!', 'success');
+
+            // Add to recent activity
+            addRecentActivity('Updated farm information', 'Just now');
+        }
+
+        function cancelFarmEdit() {
+            // Restore original values
+            document.getElementById('input-farmname').value = originalFarmData.farmname;
+            document.getElementById('input-farmsize').value = originalFarmData.farmsize;
+            document.getElementById('input-location').value = originalFarmData.location;
+            document.getElementById('input-farmtype').value = originalFarmData.farmtype;
+            document.getElementById('input-crops').value = originalFarmData.crops;
+            document.getElementById('input-certification').value = originalFarmData.certification;
+            document.getElementById('input-description').value = originalFarmData.description;
+
+            // Clear any error messages
+            const errorFields = ['farmname', 'farmsize', 'location'];
+            errorFields.forEach(field => {
+                const errorElement = document.getElementById(`error-${field}`);
+                if (errorElement) {
+                    errorElement.classList.add('hidden');
+                    // Remove error styling
+                    const inputElement = document.getElementById(`input-${field}`);
+                    if (inputElement) {
+                        inputElement.classList.remove('border-error');
+                    }
+                }
+            });
+
+            // Hide input fields, show display fields
+            const fields = ['farmname', 'farmsize', 'location', 'farmtype', 'crops', 'certification', 'description'];
+            fields.forEach(field => {
+                document.getElementById(`display-${field}`).classList.remove('hidden');
+                document.getElementById(`input-${field}`).classList.add('hidden');
+            });
+
+            // Show edit button, hide save/cancel buttons
+            document.getElementById('edit-farm-btn').classList.remove('hidden');
+            document.getElementById('save-farm-btn').classList.add('hidden');
+            document.getElementById('cancel-farm-btn').classList.add('hidden');
+        }
+
+        function saveAccountSettings() {
+            // This function is called automatically when toggles are changed
+            showNotification('Success', 'Account settings updated successfully!', 'success');
+            
+            // Add to recent activity
+            addRecentActivity('Updated account settings', 'Just now');
+        }
+
+        function handleProfileImageChange(event) {
+            const file = event.target.files[0];
+            if (file) {
+                // Validate file type
+                if (!file.type.startsWith('image/')) {
+                    showNotification('Error', 'Please select a valid image file.', 'error');
+                    return;
+                }
+
+                // Validate file size (max 5MB)
+                if (file.size > 5 * 1024 * 1024) {
+                    showNotification('Error', 'Image size must be less than 5MB.', 'error');
+                    return;
+                }
+
+                // Create file reader
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imageUrl = e.target.result;
+                    // Update profile image
+                    document.getElementById('profile-image').src = imageUrl;
+                    document.getElementById('nav-profile-image').src = imageUrl;
+                    
+                    // Show success notification
+                    showNotification('Success', 'Profile picture updated successfully!', 'success');
+                    
+                    // Add to recent activity
+                    addRecentActivity('Updated profile picture', 'Just now');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function addRecentActivity(activity, time) {
+            const activityContainer = document.querySelector('.space-y-3');
+            const newActivity = document.createElement('div');
+            newActivity.className = 'flex items-start space-x-3 p-3 bg-background rounded-lg';
+            newActivity.innerHTML = `
+                <div class="flex-shrink-0 w-2 h-2 bg-success rounded-full mt-2"></div>
+                <div>
+                    <p class="text-sm text-text-primary font-medium">${activity}</p>
+                    <p class="text-xs text-text-secondary">${time}</p>
+                </div>
+            `;
+            
+            // Add to the top of recent activities
+            activityContainer.insertBefore(newActivity, activityContainer.firstChild);
+            
+            // Keep only the last 4 activities
+            const activities = activityContainer.children;
+            if (activities.length > 4) {
+                activityContainer.removeChild(activities[activities.length - 1]);
+            }
+        }
+
+        function changePassword() {
+            const password = prompt('Enter your new password:');
+            if (password) {
+                if (password.length < 8) {
+                    showNotification('Error', 'Password must be at least 8 characters long.', 'error');
+                    return;
+                }
+                showNotification('Success', 'Password changed successfully!', 'success');
+                addRecentActivity('Changed password', 'Just now');
+            }
+        }
+
+        function exportData() {
+            // Simulate data export
+            showNotification('Success', 'Data export started. You will receive an email when ready.', 'success');
+            addRecentActivity('Exported farm data', 'Just now');
+        }
+
+        function deleteAccount() {
+            if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+                if (confirm('This will permanently delete all your data. Type "DELETE" to confirm:') === null) {
+                    return;
+                }
+                showNotification('Success', 'Account deletion request submitted. You will receive a confirmation email.', 'success');
+            }
+        }
+
+        // Close user menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const userMenu = document.getElementById('user-menu');
+            const userButton = event.target.closest('button');
+            
+            if (!userButton || !userButton.onclick || userButton.onclick.toString().indexOf('toggleUserMenu') === -1) {
+                userMenu.classList.add('hidden');
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileButton = event.target.closest('button');
+            
+            if (!mobileButton || !mobileButton.onclick || mobileButton.onclick.toString().indexOf('toggleMobileMenu') === -1) {
+                if (!mobileMenu.contains(event.target)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            }
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>
