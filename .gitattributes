@@ -1,0 +1,36 @@
+# Mark frontend/static files as vendored so Linguist excludes them from language stats
+# This will make Java count proportionally higher in GitHub language breakdown.
+
+# Pages (HTML)
+pages/** linguist-vendored=true
+*.html linguist-vendored=true
+
+# CSS and Tailwind
+css/** linguist-vendored=true
+*.css linguist-vendored=true
+tailwind.config.js linguist-vendored=true
+
+# Public static JS, images, manifest
+public/** linguist-vendored=true
+*.png linguist-vendored=true
+*.jpg linguist-vendored=true
+*.jpeg linguist-vendored=true
+*.svg linguist-vendored=true
+*.webp linguist-vendored=true
+*.json linguist-vendored=true
+*.js linguist-vendored=true
+
+# Docs and generated artifacts
+docs/** linguist-vendored=true
+target/** linguist-vendored=true
+bin/** linguist-vendored=true
+
+# Package files
+package.json linguist-vendored=true
+package-lock.json linguist-vendored=true
+
+# Editor / config files
+.vscode/** linguist-vendored=true
+
+# Keep Java sources counted as Java (no change needed):
+# backend/src/main/java/** linguist-language=Java
